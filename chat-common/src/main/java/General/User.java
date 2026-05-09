@@ -6,7 +6,8 @@ public class User implements Serializable {
     private String name;
     private int sessionID;
 
-    public User(){
-
+    public User(String name, int sessionID){
+        this.name = name;
+        this.sessionID = sessionID;
     }
 }

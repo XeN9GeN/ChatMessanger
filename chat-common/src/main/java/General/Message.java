@@ -1,5 +1,4 @@
 package General;
-import General.MSGType;
 
 import java.io.Serializable;
 
@@ -8,8 +7,10 @@ public class Message implements Serializable {
     private User user;
     private MSGType messageType;
 
-    public Message(String text){
-
+    public Message(String text,User user, MSGType type){
+        this.text=text;
+        this.user=user;
+        this.messageType=type;
     }
 
     public MSGType getMessageType() {

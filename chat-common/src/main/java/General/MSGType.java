@@ -4,5 +4,6 @@ public enum MSGType {
     TEXT,
     LOGIN,
     EXIT,
-    CONFIG
+    CONFIG,
+    UPDATE_USERS
 }

@@ -12,8 +12,8 @@ public class NetworkConnection {
 
     public NetworkConnection(Socket socket) throws IOException {
         this.socket=socket;
-        in = new ObjectInputStream(socket.getInputStream());
         out = new ObjectOutputStream(socket.getOutputStream());
+        in = new ObjectInputStream(socket.getInputStream());
     }
 
     public void sendMSG(Message msg) throws IOException {

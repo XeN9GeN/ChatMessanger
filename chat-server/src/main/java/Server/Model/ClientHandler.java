@@ -16,30 +16,30 @@ public class ClientHandler implements Runnable{
     private ServerMain server;
 
 
-    public ClientHandler(Socket socket,ServerMain server) throws IOException {
+    public ClientHandler(Socket socket, ServerMain server) throws IOException {
         this.networkConnection = new NetworkConnection(socket);
         this.server=server;
 
     }
 
     @Override
-    public void run(){
-        try{
-            while(true){
+    public void run() {
+        try {
+            while (true) {
                 Message msg = (Message) networkConnection.recvMSG();
                 handleIncomingMessage(msg);
             }
-        }
-        catch (Exception e) { System.out.println("Клиент отключился"); }
-        finally {
+        } catch (Exception e) {
+            System.out.println("Клиент отключился");
+        } finally {
             server.removeHandler(this);
             try {
                 networkConnection.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            catch (IOException e) { e.printStackTrace(); }
         }
     }
-
 
     public void handleIncomingMessage(Message m){
         if(m.getMessageType()== MSGType.TEXT){
@@ -48,6 +48,7 @@ public class ClientHandler implements Runnable{
         else if(m.getMessageType()== MSGType.LOGIN){
             this.user=m.getUser();
             server.addHandler(this);
+            server.broadcastMSG(new Message("New USER",user, MSGType.UPDATE_USERS));
         }
     }
     public void senMSGToClient(Message message){

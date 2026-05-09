@@ -86,7 +86,7 @@ public class Controller {
     private void handleIncoming(Message m) {
         if (m.getMessageType() == MSGType.TEXT || m.getMessageType() == MSGType.UPDATE_USERS) {
             String sender =m.getUser().getName();
-            String text = "Вошел в чат";
+            String text = m.getText();
 
             SwingUtilities.invokeLater(() -> {
                 ChatMSGPanel msgWidget = new ChatMSGPanel(sender, text);

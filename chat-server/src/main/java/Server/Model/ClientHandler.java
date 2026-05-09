@@ -44,12 +44,15 @@ public class ClientHandler implements Runnable{
 
     public void handleIncomingMessage(Message m){
         if(m.getMessageType()== MSGType.TEXT){
+            //server.getArchive().loadToTXT();
             server.broadcastMSG(m);
         }
+
         else if(m.getMessageType()== MSGType.LOGIN){
             this.user=m.getUser();
             server.addHandler(this);
 
+            //Подумать чё с этим делать
             List<String> users = server.getOnline();
             Message msg = new Message("log in", user, MSGType.UPDATE_USERS);
             msg.setOnlineUsers(users);

@@ -8,6 +8,7 @@ import Server.Model.ServerConfig.ServerMain;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 
 
 public class ClientHandler implements Runnable{
@@ -48,7 +49,12 @@ public class ClientHandler implements Runnable{
         else if(m.getMessageType()== MSGType.LOGIN){
             this.user=m.getUser();
             server.addHandler(this);
-            server.broadcastMSG(new Message("New USER",user, MSGType.UPDATE_USERS));
+
+            List<String> users = server.getOnline();
+            Message msg = new Message("log in", user, MSGType.UPDATE_USERS);
+            msg.setOnlineUsers(users);
+
+            server.broadcastMSG(msg);
         }
     }
     public void senMSGToClient(Message message){
@@ -60,4 +66,7 @@ public class ClientHandler implements Runnable{
     }
 
 
+    public User getUser(){
+        return this.user;
+    }
 }

@@ -10,4 +10,8 @@ public class User implements Serializable {
         this.name = name;
         this.sessionID = sessionID;
     }
+
+    public String getName(){
+        return this.name;
+    }
 }

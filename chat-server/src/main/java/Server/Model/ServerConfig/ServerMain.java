@@ -1,11 +1,13 @@
 package Server.Model.ServerConfig;
 
 import General.Message;
+import General.User;
 import Server.Model.ClientHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
@@ -16,8 +18,6 @@ public class ServerMain {
     public int port;
     private List<ClientHandler> clientHandlers = new CopyOnWriteArrayList<>();
     private ExecutorService executorService = Executors.newFixedThreadPool(50);
-    //private List<String> onlineUsers;
-
 
     public ServerMain(String host, int port){
         this.host=host;
@@ -43,6 +43,16 @@ public class ServerMain {
         for(ClientHandler cl : clientHandlers){
             cl.senMSGToClient(message);
         }
+    }
+
+    public List<String> getOnline(){
+        List<String> names = new ArrayList<>();
+        for(ClientHandler cl : clientHandlers){
+            if(cl.getUser()!=null){
+                names.add(cl.getUser().getName());
+            }
+        }
+        return names;
     }
 
     public void addHandler(ClientHandler clientHandler){

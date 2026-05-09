@@ -1,3 +1,5 @@
+package Model;
+
 import General.MSGType;
 import General.Message;
 import General.NetworkConnection;
@@ -17,7 +19,7 @@ public class ClientTet {
 
             Message resp = (Message) networkConnection.recvMSG();//отправили со стороны сервера сообщение
             //получаем на стороне клиента
-            System.out.println("S: " + resp.getMessageType() + " U: " + resp.getUser());
+            System.out.println("S: " + resp.getMessageType() + " U: " + resp.getUser().getName());
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

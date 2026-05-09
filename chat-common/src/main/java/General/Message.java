@@ -30,4 +30,8 @@ public class Message implements Serializable {
     public void setOnlineUsers(List<String> users) {
         this.onlineUsers=users;
     }
+
+    public String getText() {
+        return text;
+    }
 }

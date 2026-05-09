@@ -1,28 +1,23 @@
 package Model;
 
-import General.MSGType;
-import General.Message;
-import General.NetworkConnection;
-import General.User;
+import View.ChatMSGPanel;
+import View.ChatPanel;
+import View.LogMenuPanel;
 
 import java.io.IOException;
-import java.net.Socket;
 
 public class ClientTet {
     public static void main(String[] args) throws IOException {
-        try(Socket socket = new Socket("127.0.0.1",8081)){
-            NetworkConnection networkConnection = new NetworkConnection(socket);
+        // 1. Создаем только "каркасы" интерфейса
+        LogMenuPanel lmp = new LogMenuPanel();
+        ChatPanel cp = new ChatPanel();
 
-            User user = new User("xe",123);
-            Message msg = new Message("HI",user, MSGType.LOGIN);
-            networkConnection.sendMSG(msg);
+        // 2. Запускаем контроллер.
+        // Теперь ОН отвечает за Socket, NetworkConnection и циклы чтения.
+        new Controller(lmp, cp);
 
-            Message resp = (Message) networkConnection.recvMSG();//отправили со стороны сервера сообщение
-            //получаем на стороне клиента
-            System.out.println("S: " + resp.getMessageType() + " U: " + resp.getUser().getName());
+        // Больше в main ничего писать не нужно.
+        // Приложение будет жить, пока открыто окно JFrame.
 
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

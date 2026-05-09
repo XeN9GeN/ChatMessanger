@@ -12,6 +12,7 @@ public class LogMenuPanel extends JPanel {
     private static final Font MAIN_FONT = new Font("Segoe UI", Font.BOLD, 20);
 
 
+    //Скопировано из тетриса
     public LogMenuPanel(){
         setLayout(new GridBagLayout());
         setBackground(BACKGROUND_COLOR);

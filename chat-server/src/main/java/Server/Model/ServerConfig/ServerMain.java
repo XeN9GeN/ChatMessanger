@@ -51,22 +51,32 @@ public class ServerMain {
             ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());
         }
     }
-
-    public boolean isNicknameTaken(String nickname) {
-        for (ClientHandler cl : clientHandlers) {
-            if (cl.getUser() != null && cl.getUser().getName().equalsIgnoreCase(nickname)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void broadcastMSG(Message message) {
         for (ClientHandler cl : clientHandlers) {
             cl.senMSGToClient(message);
         }
     }
+    public List<String> getAllUsersWithStatus(){
+        List<String> allFromHistory = archive.getAllRegisteredUsers();
+        List<String> currentlyOnline = getOnline();
+        List<String> result = new ArrayList<>();
 
+        for(String name : allFromHistory){
+            if(currentlyOnline.contains(name)){
+                result.add(name + " (online)");
+            } else {
+                result.add(name + " (offline)");
+            }
+        }
+
+        //новички, но онлайн
+        for (String name : currentlyOnline) {
+            if (!allFromHistory.contains(name)) {
+                result.add(name + " (online)");
+            }
+        }
+        return result;
+    }
 
     public void addHandler(ClientHandler clientHandler) {
         clientHandlers.add(clientHandler);
@@ -75,6 +85,14 @@ public class ServerMain {
     public void removeHandler(ClientHandler clientHandler) {
         clientHandlers.remove(clientHandler);
         ServerLoger.info("Клиент удален. В сети: " + clientHandlers.size());
+    }
+    public boolean isNicknameTaken(String nickname) {
+        for (ClientHandler cl : clientHandlers) {
+            if (cl.getUser() != null && cl.getUser().getName().equalsIgnoreCase(nickname)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<String> getOnline() {

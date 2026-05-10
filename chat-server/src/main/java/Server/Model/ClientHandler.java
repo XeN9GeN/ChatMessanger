@@ -40,6 +40,11 @@ public class ClientHandler implements Runnable {
         }
         finally {
             server.removeHandler(this);
+            List<String> usersWithStatus = server.getAllUsersWithStatus();
+            Message logoutMsg = new Message(null, null, MSGType.UPDATE_USERS);
+            logoutMsg.setOnlineUsers(usersWithStatus);
+            server.broadcastMSG(logoutMsg);
+
             try {
                 networkConnection.close();
             } catch (IOException e) {
@@ -73,14 +78,15 @@ public class ClientHandler implements Runnable {
             this.user = m.getUser();
             server.addHandler(this);
 
+
             List<Message> history = server.getArchive().uploadFromTXT();
             for (Message oldMsg : history) {
                 this.senMSGToClient(oldMsg);
             }
 
-            List<String> users = server.getOnline();
+            List<String> usersWithStatus = server.getAllUsersWithStatus();
             Message msg = new Message("log in new user " + user.getName(), user, MSGType.UPDATE_USERS);
-            msg.setOnlineUsers(users);
+            msg.setOnlineUsers(usersWithStatus);
 
             server.broadcastMSG(msg);
         }

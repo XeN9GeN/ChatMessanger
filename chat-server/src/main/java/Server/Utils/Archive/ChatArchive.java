@@ -49,4 +49,23 @@ public class ChatArchive {
         return history;
     }
 
+    public List<String> getAllRegisteredUsers() {
+        List<String> allUsers = new ArrayList<>();
+        String path = "chat-server/src/main/java/Server/Utils/Archive/chatArchive.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(": ")) {
+                    String name = line.split(": ")[0].trim();
+                    if (!allUsers.contains(name)) {
+                        allUsers.add(name);
+                    }
+                }
+            }
+        } catch (IOException e) {
+        }
+        return allUsers;
+    }
+
+
 }

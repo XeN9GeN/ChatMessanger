@@ -3,6 +3,9 @@ package Server.Model.ServerConfig;
 import General.Message;
 import Server.Model.ClientHandler;
 import Server.Utils.Archive.ChatArchive;
+import Server.Utils.ExceptionPack.InternalExceptions;
+import Server.Utils.ExceptionPack.SocketExceptions;
+import Server.Utils.ServerLogs.ServerLoger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -22,29 +25,56 @@ public class ServerMain {
     public int port;
 
 
+
     public ServerMain(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
-    public void runServer() throws IOException {
+    public void runServer() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
+            ServerLoger.info("Сервер запущен на порту: " + port);
 
-            System.out.println("Сервер запущен на порту: " + port);
             while (true) {
-                Socket socket = serverSocket.accept();
-                ClientHandler clientHandler = new ClientHandler(socket, this);
-                executorService.execute(clientHandler);
+                try {
+                    Socket socket = serverSocket.accept();
+                    ClientHandler clientHandler = new ClientHandler(socket, this);
+                    executorService.execute(clientHandler);
+                } catch (IOException e) {
+                    ServerLoger.error("Ошибка при подключении клиента", e);
+                }
             }
-        } catch (IOException e) {
 
+        } catch (IOException e) {
+            ServerLoger.logAndEat(new SocketExceptions.BindException(port));
+        } catch (Exception e) {
+            ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());
         }
+    }
+
+    public boolean isNicknameTaken(String nickname) {
+        for (ClientHandler cl : clientHandlers) {
+            if (cl.getUser() != null && cl.getUser().getName().equalsIgnoreCase(nickname)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void broadcastMSG(Message message) {
         for (ClientHandler cl : clientHandlers) {
             cl.senMSGToClient(message);
         }
+    }
+
+
+    public void addHandler(ClientHandler clientHandler) {
+        clientHandlers.add(clientHandler);
+        ServerLoger.info("Клиент добавлен. В сети: " + clientHandlers.size());
+    }
+    public void removeHandler(ClientHandler clientHandler) {
+        clientHandlers.remove(clientHandler);
+        ServerLoger.info("Клиент удален. В сети: " + clientHandlers.size());
     }
 
     public List<String> getOnline() {
@@ -56,14 +86,5 @@ public class ServerMain {
         }
         return names;
     }
-
-    public void addHandler(ClientHandler clientHandler) {
-        clientHandlers.add(clientHandler);
-    }
-
-    public void removeHandler(ClientHandler clientHandler) {
-        clientHandlers.remove(clientHandler);
-    }
-
     public ChatArchive getArchive(){ return archive; }
 }

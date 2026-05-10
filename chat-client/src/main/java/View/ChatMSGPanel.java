@@ -21,7 +21,9 @@ public class ChatMSGPanel extends JPanel {
 
         JLabel msgLabel = new JLabel(text);
         msgLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-
+        if (name != null && !name.trim().isEmpty()) {
+            add(nameLabel, BorderLayout.NORTH);
+        }
         add(nameLabel, BorderLayout.NORTH);
         add(msgLabel, BorderLayout.CENTER);
 

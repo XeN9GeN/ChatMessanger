@@ -1,25 +1,52 @@
 package Server.Utils.Archive;
 
+import General.MSGType;
 import General.Message;
+import General.User;
+import Server.Utils.ExceptionPack.InternalExceptions;
+import Server.Utils.ExceptionPack.ServerException;
+import Server.Utils.ServerLogs.ServerLoger;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ChatArchive {
     public ChatArchive(String user){
     }
 
-    public void loadToTXT(Message m) throws IOException {
+    public void loadToTXT(Message m){
         String path = "chat-server/src/main/java/Server/Utils/Archive/chatArchive.txt";
-        try(Writer writer = new FileWriter(path,true)){
-            writer.write("U " + m.getUser().getName() + " | " + "M: " + m.getText() + "\n");
-        }
-        catch (IOException e ){ System.out.println("trouble with txt file");}
-    }
-    public void uploadFromTXT(){
 
+        try(Writer writer = new FileWriter(path,true)){
+            writer.write(m.getUser().getName() + ": " + m.getText() + "\n");
+        }
+
+        catch (FileNotFoundException e) {
+            ServerLoger.info("Файл истории еще не создан.");
+        }
+        catch (IOException e) {
+            ServerLoger.logAndEat(new InternalExceptions.ArchiveWriteException(path));
+        }
+    }
+
+    public List<Message> uploadFromTXT(){
+        List<Message> history = new ArrayList<>();
+        String path = "chat-server/src/main/java/Server/Utils/Archive/chatArchive.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(": ")) {
+                    //сообщение, где весь текст из файла идет в поле текста
+                    history.add(new Message(line, new User("", 0), MSGType.TEXT));
+                }
+            }
+        } catch (IOException e) {
+            ServerLoger.logAndEat(new InternalExceptions.ArchiveReadException(path));
+        }
+        return history;
     }
 
 }

@@ -1,8 +1,3 @@
-sdfkjl
-letsgo
-sdsd
-U Xen9gen | M: hello
-U Xen9gen | M: hi
-U Xen9gen | M: adios
-U Xen9gen | M: llllll
-U Xen9gen | M: !@#@#
+bob: hrllo
+bob: hi
+bob: adios

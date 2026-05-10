@@ -70,7 +70,7 @@ public class ClientHandler implements Runnable {
                     throw new ProtocolExceptions.MessageTooLong(m.getText().length());
                 }
                 server.broadcastMSG(m);
-                server.getArchive().loadToTXT(m);
+                server.getArchive().loadToTXT(m);//загружаем сообщение в архив
 
             } catch (ProtocolExceptions.MessageTooLong e) {
                 ServerLoger.logAndEat(e);
@@ -99,7 +99,7 @@ public class ClientHandler implements Runnable {
 
             List<Message> history = server.getArchive().uploadFromTXT();
             for (Message oldMsg : history) {
-                this.senMSGToClient(oldMsg);
+                this.senMSGToClient(oldMsg);//отправляем ТОЛЬКО себе прошлые сообщения
             }
             List<String> usersWithStatus = server.getAllUsersWithStatus();
 

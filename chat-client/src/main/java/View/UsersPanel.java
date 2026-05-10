@@ -16,12 +16,12 @@ public class UsersPanel extends JPanel {
         nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
 
         if (fullName.contains(currentUserName)) {
-            nameLabel.setForeground(new Color(220, 20, 60)); // Твой ник — красный
+            nameLabel.setForeground(new Color(220, 20, 60));
             setBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, new Color(220, 20, 60)));
         } else if (fullName.contains("(online)")) {
-            nameLabel.setForeground(new Color(46, 204, 113)); // Онлайн — зеленый
+            nameLabel.setForeground(new Color(46, 204, 113));
         } else {
-            nameLabel.setForeground(new Color(100, 100, 105)); // Офлайн — серый
+            nameLabel.setForeground(new Color(100, 100, 105));
         }
 
         add(nameLabel, BorderLayout.CENTER);

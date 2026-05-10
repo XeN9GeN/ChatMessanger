@@ -1,24 +1,18 @@
-user2: hi
-user1: hi
-user2: its me
-user2: sd
-user2: hi
-user1: sd
+user1: hello
 user1: im user1
+user1: im with blue ram
+user2: hello
 user2: im user2
-user2: sd
-user2: sd
-user2: as
-user2: hi
-user2: asdl
-user2: ;;sd
-user2: sd
-user2: d
-user2: asd
-user2: sd
-user1: sd
-user1: asd
-user1: asd
+user2: im with orange ram
 user1: s
+user2: s
+user2: asd
+user1: hi
+user1: for
+user1: sad
 user1: asd
-user1: sd
+user1: as
+user1: asd
+user1: as
+user2: sd
+user1: asd

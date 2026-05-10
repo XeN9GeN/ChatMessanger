@@ -12,4 +12,7 @@ public class ProtocolExceptions extends ServerException {
     public static class UnknownMessageType extends ProtocolExceptions {
         public UnknownMessageType() { super("Получен неизвестный тип объекта."); }
     }
+    public static class ClientExitException extends ProtocolExceptions{
+        public ClientExitException() { super("Клиент вышел из сервера через закрытие приложения.");}
+    }
 }

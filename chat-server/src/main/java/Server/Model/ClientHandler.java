@@ -11,12 +11,18 @@ import Server.Utils.ServerLogs.ServerLoger;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientHandler implements Runnable {
     private final NetworkConnection networkConnection;
     private User user;
     private final ServerMain server;
+    private final List<Long> messageTimestamps = new ArrayList<>();
+    private static final int MAX_MESSAGES = 5;
+    private static final long TIME_WINDOW_MS = 3000;
+
+
 
     public ClientHandler(Socket socket, ServerMain server) throws IOException {
         this.networkConnection = new NetworkConnection(socket);
@@ -53,10 +59,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    //обработка типов сообщений от клиента
     public void handleIncomingMessage(Message m) throws ServerException {
 
         if (m.getMessageType() == MSGType.TEXT) {
             try {
+                checkFlood();
+
                 if (m.getText() == null || m.getText().isEmpty() || m.getText().length() > 1000) {
                     throw new ProtocolExceptions.MessageTooLong(m.getText().length());
                 }
@@ -66,6 +75,11 @@ public class ClientHandler implements Runnable {
             } catch (ProtocolExceptions.MessageTooLong e) {
                 ServerLoger.logAndEat(e);
                 senMSGToClient(new Message("Ошибка: сообщение слишком длинное!",
+                        new User("System", 0), MSGType.TEXT));
+
+            } catch (ProtocolExceptions.FloodException e) {
+                ServerLoger.logAndEat(e);
+                senMSGToClient(new Message("Предупреждение: не спамьте! Сообщение не отправлено.",
                         new User("System", 0), MSGType.TEXT));
             }
         }
@@ -93,6 +107,22 @@ public class ClientHandler implements Runnable {
             msg.setOnlineUsers(usersWithStatus);
 
             server.broadcastMSG(msg);
+        }
+
+        else if(m.getMessageType()==MSGType.EXIT){
+            throw new ProtocolExceptions.ClientExitException();//не ловится внутри, чтобы метод выше поймал его и
+            //завёл в finally
+        }
+    }
+
+    private void checkFlood() throws ProtocolExceptions.FloodException {
+        long now = System.currentTimeMillis();
+        messageTimestamps.add(now);
+
+        messageTimestamps.removeIf(t -> now - t > TIME_WINDOW_MS);
+
+        if (messageTimestamps.size() > MAX_MESSAGES) {
+            throw new ProtocolExceptions.FloodException();
         }
     }
 

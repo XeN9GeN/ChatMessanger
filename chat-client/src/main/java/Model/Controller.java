@@ -30,6 +30,21 @@ public class Controller {
 
         this.frame = new JFrame("8-BIT_CHAT");
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.addWindowListener(new java.awt.event.WindowAdapter() {//закрытие через крест
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                try {
+                    if (networkConnection != null && currentUser != null) {
+                        networkConnection.sendMSG(new Message(null, currentUser, MSGType.EXIT));
+                        networkConnection.close();
+                    }
+                } catch (IOException ignored) {}
+                frame.dispose();
+                System.exit(0);
+            }
+        });
+
+
         this.frame.setSize(400, 600);
         this.frame.setLocationRelativeTo(null);
 
@@ -117,7 +132,7 @@ public class Controller {
 
             } catch (ClientException e) {
                 handleClientError(e);
-            } catch (Exception e) {
+            } catch (Exception e) {//ЕСЛИ ПЕРЕСТАЁТ РАБОТАТЬ networkConnection.recvMSG() ТО ТАЙМАУТ ВЫКИНЕТ ТЕБЯ!
                 handleClientError(new ClientException.ConnectionException("Связь с сервером потеряна"));
                 SwingUtilities.invokeLater(this::showLoginMenu);
             }
@@ -137,7 +152,7 @@ public class Controller {
             chatPanel.updateOnlineList(m.getOnlineUsers(), currentUser.getName());
         }
 
-        if (m.getMessageType() == MSGType.TEXT || m.getMessageType() == MSGType.UPDATE_USERS) {
+        if (m.getMessageType() == MSGType.TEXT) {
             String sender = (m.getUser() != null) ? m.getUser().getName() : "System";
             String text = m.getText();
 

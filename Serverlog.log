@@ -384,3 +384,96 @@ INFO: Клиент добавлен. В сети: 2
 INFO: Сессия пользователя user2 завершена.
 мая 10, 2026 11:42:59 PM Server.Utils.ServerLogs.ServerLoger info
 INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:53:07 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:53:29 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:53:35 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:53:56 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:54:20 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:100)
+	at Server.Model.ClientHandler.run(ClientHandler.java:36)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:54:20 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:55:09 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:55:19 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:100)
+	at Server.Model.ClientHandler.run(ClientHandler.java:36)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:55:19 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:55:23 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:100)
+	at Server.Model.ClientHandler.run(ClientHandler.java:36)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:55:23 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 12:16:13 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 12:16:24 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 12:16:36 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 12:16:58 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Обнаружен спам/флуд.
+Server.Utils.ExceptionPack.ProtocolExceptions$FloodException: Нарушение протокола: Обнаружен спам/флуд.
+	at Server.Model.ClientHandler.checkFlood(ClientHandler.java:125)
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:67)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 12:16:59 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Обнаружен спам/флуд.
+Server.Utils.ExceptionPack.ProtocolExceptions$FloodException: Нарушение протокола: Обнаружен спам/флуд.
+	at Server.Model.ClientHandler.checkFlood(ClientHandler.java:125)
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:67)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 12:16:59 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Обнаружен спам/флуд.
+Server.Utils.ExceptionPack.ProtocolExceptions$FloodException: Нарушение протокола: Обнаружен спам/флуд.
+	at Server.Model.ClientHandler.checkFlood(ClientHandler.java:125)
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:67)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 12:18:02 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:113)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 12:18:02 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 12:18:04 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:113)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 12:18:04 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0

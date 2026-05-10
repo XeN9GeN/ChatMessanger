@@ -24,6 +24,7 @@ public class NetworkConnection {
         out.reset();
     }
 
+    //SocketTimeoutException — это IOException от таймаута, поэтому в run() ClientHandler всё ок
     public Object recvMSG() throws IOException, ClassNotFoundException {
         return in.readObject();
     }

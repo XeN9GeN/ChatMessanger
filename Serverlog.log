@@ -120,3 +120,82 @@ INFO: Сервер запущен на порту: 8081
 INFO: Клиент добавлен. В сети: 1
 мая 10, 2026 7:25:30 PM Server.Utils.ServerLogs.ServerLoger info
 INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 7:27:44 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:27:49 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:27:52 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с bob разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с bob разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 7:27:52 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 7:28:15 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:30:35 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:30:44 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:30:49 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:34:21 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:34:29 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:47:51 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:47:55 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:48:27 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с ker разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с ker разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 7:48:27 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 7:52:01 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:52:06 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:53:57 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:54:00 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:56:04 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с ker разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с ker разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 7:56:04 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 7:59:25 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 7:59:31 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 7:59:42 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 7:59:52 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с bob разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с bob разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 7:59:52 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 7:59:53 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с ker разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с ker разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 7:59:53 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0

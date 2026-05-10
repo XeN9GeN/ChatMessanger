@@ -57,6 +57,15 @@ public class Controller {
                 chatPanel.getInputField().setText("");
             }
         });
+        // Слушатель для кнопки
+        chatPanel.getSendButton().addActionListener(e -> {
+            String text = chatPanel.getInputField().getText();
+            if (!text.isEmpty()) {
+                sendMessage(text);
+                chatPanel.getInputField().setText("");
+            }
+        });
+
     }
 
     private void connectToServer(String name) {
@@ -99,7 +108,7 @@ public class Controller {
 
     private void handleIncoming(Message m) {
         if (m.getOnlineUsers() != null && !m.getOnlineUsers().isEmpty()) {
-            chatPanel.updateOnlineList(m.getOnlineUsers());
+            chatPanel.updateOnlineList(m.getOnlineUsers(), currentUser.getName());
         }
 
         if (m.getMessageType() == MSGType.TEXT || m.getMessageType() == MSGType.UPDATE_USERS) {

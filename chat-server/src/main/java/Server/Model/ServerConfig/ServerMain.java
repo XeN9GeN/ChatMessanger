@@ -85,14 +85,16 @@ public class ServerMain {
                 result.add(name + " (offline)");
             }
         }
-
-        //новички, но онлайн
-        for (String name : currentlyOnline) {
-            if (!allFromHistory.contains(name)) {
-                result.add(name + " (online)");
+        return result;
+    }
+    public List<String> getOnline() {
+        List<String> names = new ArrayList<>();
+        for (ClientHandler cl : clientHandlers) {
+            if (cl.getUser() != null) {
+                names.add(cl.getUser().getName());
             }
         }
-        return result;
+        return names;
     }
 
     public void addHandler(ClientHandler clientHandler) {
@@ -112,14 +114,6 @@ public class ServerMain {
         return false;
     }
 
-    public List<String> getOnline() {
-        List<String> names = new ArrayList<>();
-        for (ClientHandler cl : clientHandlers) {
-            if (cl.getUser() != null) {
-                names.add(cl.getUser().getName());
-            }
-        }
-        return names;
-    }
+
     public ChatArchive getArchive(){ return archive; }
 }

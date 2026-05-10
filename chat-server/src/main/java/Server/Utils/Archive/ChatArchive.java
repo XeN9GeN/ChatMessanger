@@ -61,10 +61,26 @@ public class ChatArchive {
                         allUsers.add(name);
                     }
                 }
+                else {
+                    String name = line.trim();
+                    if (!name.isEmpty() && !allUsers.contains(name)) {
+                        allUsers.add(name);
+                    }
+                }
             }
+
         } catch (IOException e) {
         }
         return allUsers;
+    }
+
+    public void registerUser(String name) {
+        String path = "chatArchive.txt";
+        try (Writer writer = new FileWriter(path, true)) {
+            writer.write(name + "\n");
+        } catch (IOException e) {
+            ServerLoger.logAndEat(new InternalExceptions.ArchiveWriteException(path));
+        }
     }
 
 

@@ -95,14 +95,15 @@ public class ClientHandler implements Runnable {
 
             this.user = m.getUser();
             server.addHandler(this);
-
+            server.getArchive().registerUser(this.user.getName());
 
             List<Message> history = server.getArchive().uploadFromTXT();
             for (Message oldMsg : history) {
                 this.senMSGToClient(oldMsg);
             }
-
             List<String> usersWithStatus = server.getAllUsersWithStatus();
+
+
             Message msg = new Message("log in user " + user.getName(), user, MSGType.UPDATE_USERS);
             msg.setOnlineUsers(usersWithStatus);
 

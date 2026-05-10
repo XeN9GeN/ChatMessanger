@@ -4,88 +4,83 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChatMSGPanel extends JPanel {
-
     private final String username;
     private final String message;
-
+    private final boolean isMine;
     private Color accent;
+    private JTextArea textArea;
 
-    public ChatMSGPanel(String username, String message) {
+    public ChatMSGPanel(String username, String message, String currentUserName) {
         this.username = username;
         this.message = message;
+        this.isMine = username != null && currentUserName != null &&
+                username.trim().equalsIgnoreCase(currentUserName.trim());
 
         setOpaque(false);
         setLayout(new BorderLayout());
-        setBorder(BorderFactory.createEmptyBorder(8,10,8,10));
 
-        Dimension size = new Dimension(Integer.MAX_VALUE, 80);
+        textArea = new JTextArea(message);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(false);
+        textArea.setEditable(false);
+        textArea.setOpaque(false);
+        textArea.setForeground(Color.WHITE);
+
+        Font f = ChatPanel.pixelFont != null ? ChatPanel.pixelFont.deriveFont(Font.PLAIN, 12f) : new Font("Monospaced", Font.PLAIN, 12);
+        textArea.setFont(f);
+
+        int fixedWidth = 380;
+        int horizontalPadding = 40;
+        textArea.setSize(new Dimension(fixedWidth - horizontalPadding, Short.MAX_VALUE));
+
+        JPanel textWrapper = new JPanel(new BorderLayout());
+        textWrapper.setOpaque(false);
+        textWrapper.setBorder(BorderFactory.createEmptyBorder(45, 20, 15, 20));
+        textWrapper.add(textArea, BorderLayout.CENTER);
+        add(textWrapper, BorderLayout.CENTER);
+
+        int textHeight = textArea.getPreferredSize().height;
+        int finalHeight = Math.max(100, textHeight + 65);
+
+        Dimension size = new Dimension(fixedWidth, finalHeight);
         setPreferredSize(size);
-        int parentWidth = 380;
-        setMaximumSize(new Dimension(parentWidth, 90));
-        setPreferredSize(new Dimension(parentWidth, 90));
+        setMinimumSize(size);
+        setMaximumSize(size);
 
         accent = getUserColor(username);
     }
 
-    private Color getUserColor(String name) {
-        if (name == null || name.isEmpty()) return Color.GRAY;
-
-        Color[] colors = {
-                new Color(255, 82, 82),   // Красный
-                new Color(255, 196, 0),  // Желтый
-                new Color(180, 80, 255), // Фиолетовый
-                new Color(120, 255, 100),// Зеленый
-                new Color(80, 160, 255), // Синий
-                new Color(255, 64, 129),  // Розовый
-                new Color(0, 191, 165),  // Бирюзовый
-                new Color(255, 110, 64)   // Оранжевый
-        };
-        int index = Math.abs(name.toLowerCase().hashCode()) % colors.length;
-        return colors[index];
-    }
-
-
     @Override
     protected void paintComponent(Graphics g) {
-
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
-        g2.setRenderingHint(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON
-        );
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         int w = getWidth();
         int h = getHeight();
 
-        Polygon bubble = new Polygon();
+        g2.setColor(new Color(20, 10, 15, 140));
+        g2.fillRect(5, 5, w - 10, h - 10);
 
-        bubble.addPoint(0, 15);
-        bubble.addPoint(35, 0);
-        bubble.addPoint(w - 20, 0);
-        bubble.addPoint(w, h / 2);
-        bubble.addPoint(w - 20, h);
-        bubble.addPoint(15, h);
-        bubble.addPoint(0, h - 15);
+        g2.setColor(new Color(255, 105, 180));
+        g2.setStroke(new BasicStroke(2.5f));
+        g2.drawRect(5, 5, w - 10, h - 10);
 
-        g2.setColor(new Color(15,15,18));
-        g2.fillPolygon(bubble);
-
-        g2.setStroke(new BasicStroke(3f));
-        g2.setColor(Color.WHITE);
-        g2.drawPolygon(bubble);
+        if (ChatPanel.pixelFont != null) {
+            g2.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 14f));
+        } else {
+            g2.setFont(new Font("Monospaced", Font.BOLD, 14));
+        }
 
         g2.setColor(accent);
-        g2.fillRect(0,0,8,h);
-
-        g2.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        g2.setColor(accent);
-
-        g2.drawString(username + ":", 20, 28);
-
-        g2.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-        g2.setColor(Color.WHITE);
-
-        g2.drawString(message, 20, 55);
+        g2.drawString(username.toUpperCase(), 20, 35);
     }
+
+    private Color getUserColor(String name) {
+        Color[] colors = {new Color(255, 150, 180), new Color(255, 220, 240), new Color(220, 180, 255), new Color(255, 120, 150)};
+        int index = Math.abs(name != null ? name.hashCode() : 0) % colors.length;
+        return colors[index];
+    }
+
+    public boolean isMine() { return isMine; }
 }

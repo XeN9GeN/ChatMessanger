@@ -66,7 +66,7 @@ public class ClientHandler implements Runnable {
             try {
                 checkFlood();
 
-                if (m.getText() == null || m.getText().isEmpty() || m.getText().length() > 1000) {
+                if (m.getText() == null || m.getText().isEmpty() || m.getText().length() > 150) {
                     throw new ProtocolExceptions.MessageTooLong(m.getText().length());
                 }
                 server.broadcastMSG(m);

@@ -1,7 +1,6 @@
 user1
-user2
-user2
-user3
-user3
-user1
-user4
+USER_NAME
+USER_NAME
+USER_NAME
+USER_NAME
+USER_NAME

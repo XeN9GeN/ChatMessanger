@@ -3,30 +3,28 @@ package View;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 
 public class LogMenuPanel extends JPanel {
     private final JTextField name_field;
     private final JTextField host_field;
     private final JTextField port_field;
 
-
-    private static final Color BG = new Color(10, 10, 14);
-    private static final Color RED = new Color(220, 20, 60);
-    private static final Color WHITE = new Color(245, 245, 245);
+    private static final Color BG = new Color(25, 10, 15);
+    private static final Color PINK_BRIGHT = new Color(255, 105, 180);
+    private static final Color SAKURA_SOFT = new Color(255, 230, 235);
 
     public LogMenuPanel() {
         setLayout(new GridBagLayout());
         setBackground(BG);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel title = new JLabel("ACCESS TERMINAL");
-        title.setFont(new Font("Arial", Font.BOLD, 34));
-        title.setForeground(WHITE);
-        gbc.gridy = 0; gbc.insets = new Insets(0,0,30,0);
+        JLabel title = new JLabel("SAKURA_OS v8.1");
+        title.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 16f));
+        title.setForeground(PINK_BRIGHT);
+        gbc.gridy = 0; gbc.insets = new Insets(0,0,40,0);
         add(title, gbc);
 
-        name_field = createStyledField("CODENAME");
+        name_field = createStyledField("USER_NAME");
         gbc.gridy = 1; gbc.insets = new Insets(0,0,15,0);
         add(name_field, gbc);
 
@@ -35,71 +33,36 @@ public class LogMenuPanel extends JPanel {
         add(host_field, gbc);
 
         port_field = createStyledField("8081");
-        gbc.gridy = 3;
+        gbc.gridy = 3; gbc.insets = new Insets(15,0,0,0);
         add(port_field, gbc);
     }
+
     private JTextField createStyledField(String hint) {
         JTextField field = new JTextField(hint, 18);
-        field.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        field.setForeground(WHITE);
-        field.setBackground(new Color(20,20,25));
-        field.setCaretColor(RED);
-        field.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(RED, 2),
-                new EmptyBorder(10,15,10,15)
-        ));
-        field.setPreferredSize(new Dimension(320, 50));
+        field.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 16f));
+        field.setForeground(SAKURA_SOFT);
+        field.setBackground(new Color(45, 20, 30));
+        field.setCaretColor(PINK_BRIGHT);
+        field.setBorder(BorderFactory.createLineBorder(PINK_BRIGHT, 2));
+        field.setPreferredSize(new Dimension(380, 60));
         return field;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
-
-        g2.setRenderingHint(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON
-        );
-
-        GradientPaint gp = new GradientPaint(
-                0,0,
-                new Color(15,15,20),
-                getWidth(),
-                getHeight(),
-                new Color(40,0,0)
-        );
-
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+        GradientPaint gp = new GradientPaint(0, 0, new Color(40, 10, 20), 0, getHeight(), new Color(10, 5, 10));
         g2.setPaint(gp);
-        g2.fillRect(0,0,getWidth(),getHeight());
-
-        g2.setColor(new Color(255,0,0,30));
-
-        for(int i = 0; i < 20; i++) {
-
-            int x = (int)(Math.random() * getWidth());
-            int y = (int)(Math.random() * getHeight());
-
-            Polygon p = new Polygon();
-
-            p.addPoint(x,y);
-            p.addPoint(x + 80, y + 20);
-            p.addPoint(x + 20, y + 90);
-
-            g2.fillPolygon(p);
-        }
+        g2.fillRect(0, 0, getWidth(), getHeight());
     }
 
     public String getHost() { return host_field.getText().trim(); }
     public String getPort() { return port_field.getText().trim(); }
     public String getPlayerName() { return name_field.getText().trim(); }
     public JTextField getNameField() { return name_field; }
-
     public JTextField getHostField() { return host_field; }
     public JTextField getPortField() { return port_field; }
-    public JTextField getInputField() {
-        return name_field;
-    }
+    public JTextField getInputField() { return name_field; }
 }

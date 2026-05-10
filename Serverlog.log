@@ -639,3 +639,379 @@ INFO: Клиент удален. В сети: 0
 INFO: Сервер запущен на порту: 8081
 мая 11, 2026 12:51:11 AM Server.Utils.ServerLogs.ServerLoger info
 INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 12:58:51 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 12:59:06 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 12:59:15 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 12:59:35 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 1:02:33 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:02:33 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 1:02:41 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 1:05:58 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:05:58 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 1:05:59 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:05:59 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:07:12 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:07:23 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:07:33 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 1:24:15 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:24:22 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:24:27 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:24:27 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:29:17 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:29:31 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:29:41 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:31:36 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:31:42 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:31:51 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:31:51 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:32:17 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:33:07 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:34:49 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:35:00 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:35:48 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:35:48 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:36:26 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:36:32 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:39:17 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:39:22 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:40:58 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:41:04 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:43:30 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:43:37 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:43:41 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:43:41 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:46:53 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:46:58 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:48:30 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:48:35 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:48:55 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 1:49:47 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:49:47 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 1:49:48 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:49:48 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:50:35 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:51:05 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:51:10 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:51:19 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:51:19 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:52:47 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:52:52 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:53:08 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 1:54:12 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:54:12 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 1:55:57 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:56:03 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:58:46 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:58:51 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:58:59 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 1:58:59 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 1:59:14 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 1:59:16 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 1:59:49 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 11, 2026 2:00:04 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Ошибка входа: Ник 'user1' уже занят.
+Server.Utils.ExceptionPack.AuthExceptions$UserAlreadyExists: Ошибка входа: Ник 'user1' уже занят.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:93)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:00:04 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 2
+мая 11, 2026 2:00:05 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Ошибка входа: Ник 'user1' уже занят.
+Server.Utils.ExceptionPack.AuthExceptions$UserAlreadyExists: Ошибка входа: Ник 'user1' уже занят.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:93)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:00:05 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 2
+мая 11, 2026 2:00:17 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:00:17 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 11, 2026 2:00:17 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:00:17 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:06:43 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:07:30 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:08:50 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:10:15 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:10:21 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:11:31 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:11:31 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:12:28 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:12:34 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:14:01 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:14:06 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:14:16 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:14:16 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:15:26 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:15:30 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:18:01 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:18:06 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:19:31 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:19:31 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:20:42 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:20:46 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:22:04 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:22:04 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:22:34 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:22:39 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:23:10 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:23:10 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 11, 2026 2:23:43 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:23:51 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:24:57 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:25:02 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:26:31 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:26:37 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:27:54 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:27:57 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:28:03 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Сообщение слишком длинное (154 симв.).
+Server.Utils.ExceptionPack.ProtocolExceptions$MessageTooLong: Нарушение протокола: Сообщение слишком длинное (154 симв.).
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:70)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:29:52 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:29:57 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:30:46 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 11, 2026 2:30:52 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 11, 2026 2:30:57 AM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+Server.Utils.ExceptionPack.ProtocolExceptions$ClientExitException: Нарушение протокола: Клиент вышел из сервера через закрытие приложения.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:114)
+	at Server.Model.ClientHandler.run(ClientHandler.java:42)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 11, 2026 2:30:57 AM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0

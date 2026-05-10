@@ -157,7 +157,7 @@ public class Controller {
             String text = m.getText();
 
             SwingUtilities.invokeLater(() -> {
-                ChatMSGPanel msgWidget = new ChatMSGPanel(sender, text);
+                ChatMSGPanel msgWidget = new ChatMSGPanel(sender, text, currentUser.getName());
                 chatPanel.addMessageComponent(msgWidget);
             });
 

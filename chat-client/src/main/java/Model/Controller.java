@@ -4,6 +4,7 @@ import General.MSGType;
 import General.Message;
 import General.NetworkConnection;
 import General.User;
+import Utils.ClientException;
 import View.*;
 import View.ChatMSGPanel;
 import View.ChatPanel;
@@ -12,12 +13,11 @@ import View.LogMenuPanel;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Controller {
     private final LogMenuPanel logMenuPanel;
     private final ChatPanel chatPanel;
-    private JFrame frame;
+    private final JFrame frame;
 
     private NetworkConnection networkConnection;
     private User currentUser;
@@ -37,6 +37,9 @@ public class Controller {
 
         setupLogic();
     }
+
+
+
     private void setupLogic() {
         //enter in login
         logMenuPanel.getNameField().addActionListener(e -> {
@@ -57,8 +60,10 @@ public class Controller {
     }
 
     private void connectToServer(String name) {
+        String host = "127.0.0.1";
+        int port = 8081;
         try{
-            Socket socket = new Socket("127.0.0.1",8081);
+            Socket socket = new Socket(host,port);
             this.networkConnection = new NetworkConnection(socket);
 
             this.currentUser = new User(name,(int) (Math.random() * 1000));
@@ -68,7 +73,7 @@ public class Controller {
             showChat();
             startMessageListener();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            handleClientError(new ClientException.ConnectionException(host));
         }
     }
 
@@ -80,14 +85,23 @@ public class Controller {
                     if (obj instanceof Message) {
                         handleIncoming((Message) obj);
                     }
+                    else {
+                        throw new ClientException.ProtocolException();
+                    }
                 }
+            } catch (ClientException e) {
+                handleClientError(e);
+            } catch (Exception e) {
+                System.out.println("Соединение разорвано");
             }
-            catch (IOException e) {System.out.println("Connect thread gg");}
-            catch (Exception e) { e.printStackTrace(); }
         }).start();
     }
 
     private void handleIncoming(Message m) {
+        if (m.getOnlineUsers() != null && !m.getOnlineUsers().isEmpty()) {
+            chatPanel.updateOnlineList(m.getOnlineUsers());
+        }
+
         if (m.getMessageType() == MSGType.TEXT || m.getMessageType() == MSGType.UPDATE_USERS) {
             String sender =m.getUser().getName();
             String text = m.getText();
@@ -96,6 +110,7 @@ public class Controller {
                 ChatMSGPanel msgWidget = new ChatMSGPanel(sender, text);
                 chatPanel.addMessageComponent(msgWidget);
             });
+
             System.out.println("good for client from server with msg: " + m.getText());
         }
     }
@@ -105,7 +120,7 @@ public class Controller {
             Message msg = new Message(text, currentUser, MSGType.TEXT);
             networkConnection.sendMSG(msg);
         } catch (IOException e) {
-            e.printStackTrace();
+            handleClientError(new ClientException.ConnectionException("серверу"));
         }
     }
 
@@ -116,6 +131,9 @@ public class Controller {
         frame.repaint();
         chatPanel.getInputField().requestFocusInWindow();
     }
-
+    private void handleClientError(ClientException e) {
+        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(frame, e.getMessage(),
+                "Ошибка", JOptionPane.ERROR_MESSAGE));
+    }
 
 }

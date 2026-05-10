@@ -61,12 +61,13 @@ public class ClientHandler implements Runnable {
         }
 
         else if (m.getMessageType() == MSGType.LOGIN) {
-            if (user == null || user.getName() == null || user.getName().isEmpty()) {
+            User temp = m.getUser();
+            if (temp == null || temp.getName() == null || temp.getName().isEmpty()) {
                 throw new AuthExceptions.InvalidNickname("Ник пуст");
             }
-            if (server.isNicknameTaken(user.getName())) {
+            if (server.isNicknameTaken(temp.getName())) {
                 senMSGToClient(new Message("Ник уже занят", new User("System", 0), MSGType.TEXT));
-                throw new AuthExceptions.UserAlreadyExists(user.getName());
+                throw new AuthExceptions.UserAlreadyExists(temp.getName());
             }
 
             this.user = m.getUser();
@@ -89,7 +90,8 @@ public class ClientHandler implements Runnable {
         try {
             networkConnection.sendMSG(message);
         } catch (IOException e) {
-            ServerLoger.logAndEat(new SocketExceptions.ConnectionResetException(user != null ? user.getName() : "unknown"));
+            ServerLoger.logAndEat(new SocketExceptions.ConnectionResetException(user != null ?
+                    user.getName() : "unknown"));
         }
     }
 

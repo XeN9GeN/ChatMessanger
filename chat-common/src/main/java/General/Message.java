@@ -19,6 +19,9 @@ public class Message implements Serializable {
     public void setOnlineUsers(List<String> users) {
         this.onlineUsers=users;
     }
+    public List<String> getOnlineUsers() {
+        return onlineUsers;
+    }
     public MSGType getMessageType() {
         return messageType;
     }

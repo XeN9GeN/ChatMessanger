@@ -6,48 +6,50 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class LogMenuPanel extends JPanel {
-
     private final JTextField name_field;
+    private final JTextField host_field;
+    private final JTextField port_field;
+
 
     private static final Color BG = new Color(10, 10, 14);
     private static final Color RED = new Color(220, 20, 60);
     private static final Color WHITE = new Color(245, 245, 245);
 
     public LogMenuPanel() {
-
         setLayout(new GridBagLayout());
         setBackground(BG);
-
-        name_field = new JTextField(18);
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel title = new JLabel("ENTER CODENAME");
+        JLabel title = new JLabel("ACCESS TERMINAL");
         title.setFont(new Font("Arial", Font.BOLD, 34));
         title.setForeground(WHITE);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0,0,25,0);
-
+        gbc.gridy = 0; gbc.insets = new Insets(0,0,30,0);
         add(title, gbc);
 
-        name_field.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        name_field.setForeground(WHITE);
-        name_field.setCaretColor(RED);
-
-        name_field.setBackground(new Color(20,20,25));
-
-        name_field.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(RED, 2),
-                new EmptyBorder(12,15,12,15)
-        ));
-
-        name_field.setPreferredSize(new Dimension(320,55));
-
-        gbc.gridy = 1;
-
+        name_field = createStyledField("CODENAME");
+        gbc.gridy = 1; gbc.insets = new Insets(0,0,15,0);
         add(name_field, gbc);
+
+        host_field = createStyledField("Host");
+        gbc.gridy = 2;
+        add(host_field, gbc);
+
+        port_field = createStyledField("Port");
+        gbc.gridy = 3;
+        add(port_field, gbc);
+    }
+    private JTextField createStyledField(String hint) {
+        JTextField field = new JTextField(hint, 18);
+        field.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        field.setForeground(WHITE);
+        field.setBackground(new Color(20,20,25));
+        field.setCaretColor(RED);
+        field.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(RED, 2),
+                new EmptyBorder(10,15,10,15)
+        ));
+        field.setPreferredSize(new Dimension(320, 50));
+        return field;
     }
 
     @Override
@@ -90,11 +92,11 @@ public class LogMenuPanel extends JPanel {
         }
     }
 
-    public String getPlayerName() {
-        return name_field.getText().trim();
-    }
+    public String getHost() { return host_field.getText().trim(); }
+    public String getPort() { return port_field.getText().trim(); }
+    public String getPlayerName() { return name_field.getText().trim(); }
+    public JTextField getNameField() { return name_field; }
 
-    public JTextField getNameField() {
-        return name_field;
-    }
+    public JTextField getHostField() { return host_field; }
+    public JTextField getPortField() { return port_field; }
 }

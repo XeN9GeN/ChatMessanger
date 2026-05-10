@@ -8,7 +8,7 @@ public class ServerApp {
 
         while (true) {
             try {
-                ServerMain serverMain = new ServerMain("127.0.0.1", 8081);
+                ServerMain serverMain = new ServerMain("87.103.240.220/", 5885);
                 serverMain.runServer();
             } catch (Exception e) {
                 ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());

@@ -85,7 +85,7 @@ public class ClientHandler implements Runnable {
             }
 
             List<String> usersWithStatus = server.getAllUsersWithStatus();
-            Message msg = new Message("log in new user " + user.getName(), user, MSGType.UPDATE_USERS);
+            Message msg = new Message("log in user " + user.getName(), user, MSGType.UPDATE_USERS);
             msg.setOnlineUsers(usersWithStatus);
 
             server.broadcastMSG(msg);

@@ -51,7 +51,7 @@ public class ChatArchive {
 
     public List<String> getAllRegisteredUsers() {
         List<String> allUsers = new ArrayList<>();
-        String path = "chat-server/src/main/java/Server/Utils/Archive/chatArchive.txt";
+        String path = "chatArchive.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {

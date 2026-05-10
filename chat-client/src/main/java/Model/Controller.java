@@ -11,6 +11,7 @@ import View.ChatPanel;
 import View.LogMenuPanel;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -42,12 +43,24 @@ public class Controller {
 
     private void setupLogic() {
         //enter in login
-        logMenuPanel.getNameField().addActionListener(e -> {
+        ActionListener loginAction = e -> {
             String name = logMenuPanel.getPlayerName();
-            if (!name.isEmpty()) {
-                connectToServer(name);
+            String host = logMenuPanel.getHost();
+            String portStr = logMenuPanel.getPort();
+
+            if (!name.isEmpty() && !host.isEmpty() && !portStr.isEmpty()) {
+                try {
+                    int port = Integer.parseInt(portStr);
+                    connectToServer(name, host, port);
+                } catch (NumberFormatException ex) {
+                    handleClientError(new Utils.ClientException("Порт должен быть числом!"));
+                }
             }
-        });
+        };
+        logMenuPanel.getNameField().addActionListener(loginAction);
+        logMenuPanel.getHostField().addActionListener(loginAction);
+        logMenuPanel.getPortField().addActionListener(loginAction);
+
 
         //enter in chat
         chatPanel.getInputField().addActionListener(e -> {
@@ -57,7 +70,8 @@ public class Controller {
                 chatPanel.getInputField().setText("");
             }
         });
-        // Слушатель для кнопки
+
+        //send
         chatPanel.getSendButton().addActionListener(e -> {
             String text = chatPanel.getInputField().getText();
             if (!text.isEmpty()) {
@@ -65,12 +79,9 @@ public class Controller {
                 chatPanel.getInputField().setText("");
             }
         });
-
     }
 
-    private void connectToServer(String name) {
-        String host = "127.0.0.1";
-        int port = 8081;
+    private void connectToServer(String name, String host, int port) {
         try{
             Socket socket = new Socket(host,port);
             this.networkConnection = new NetworkConnection(socket);
@@ -112,7 +123,7 @@ public class Controller {
         }
 
         if (m.getMessageType() == MSGType.TEXT || m.getMessageType() == MSGType.UPDATE_USERS) {
-            String sender =m.getUser().getName();
+            String sender = (m.getUser() != null) ? m.getUser().getName() : "System";
             String text = m.getText();
 
             SwingUtilities.invokeLater(() -> {

@@ -10,6 +10,7 @@ import Server.Utils.ServerLogs.ServerLoger;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.List;
 
 public class ClientHandler implements Runnable {
@@ -19,6 +20,8 @@ public class ClientHandler implements Runnable {
 
     public ClientHandler(Socket socket, ServerMain server) throws IOException {
         this.networkConnection = new NetworkConnection(socket);
+        //задаёт максимальное время ожидания входящих данных при блокирующем чтении (readObject внутри recvMSG())
+        this.networkConnection.socket.setSoTimeout(20000);//от клиента к серверу
         this.server = server;
     }
 
@@ -35,34 +38,36 @@ public class ClientHandler implements Runnable {
 
         } catch (ProtocolExceptions | AuthExceptions e) {
             ServerLoger.logAndEat(e);
-        } catch (Exception e) {//всё остальное если есть
-            ServerLoger.logAndEat(new SocketExceptions.ConnectionResetException(user != null ? user.getName() : "unknown"));
+        } catch (SocketTimeoutException e) {
+            ServerLoger.logAndEat(new SocketExceptions.TimeoutException());
+        } catch (Exception e) {
+            ServerLoger.info("Сессия пользователя " + (user != null ? user.getName() : "unknown") + " завершена.");
         }
+
         finally {
             server.removeHandler(this);
             List<String> usersWithStatus = server.getAllUsersWithStatus();
             Message logoutMsg = new Message(null, null, MSGType.UPDATE_USERS);
             logoutMsg.setOnlineUsers(usersWithStatus);
             server.broadcastMSG(logoutMsg);
-
-            try {
-                networkConnection.close();
-            } catch (IOException e) {
-                ServerLoger.error("Ошибка закрытия сокета", e);
-            }
         }
     }
 
     public void handleIncomingMessage(Message m) throws ServerException {
+
         if (m.getMessageType() == MSGType.TEXT) {
-            if (m.getText() == null || m.getText().isEmpty()) {
-                return;
+            try {
+                if (m.getText() == null || m.getText().isEmpty() || m.getText().length() > 1000) {
+                    throw new ProtocolExceptions.MessageTooLong(m.getText().length());
+                }
+                server.broadcastMSG(m);
+                server.getArchive().loadToTXT(m);
+
+            } catch (ProtocolExceptions.MessageTooLong e) {
+                ServerLoger.logAndEat(e);
+                senMSGToClient(new Message("Ошибка: сообщение слишком длинное!",
+                        new User("System", 0), MSGType.TEXT));
             }
-            if (m.getText().length() > 1000) {
-                throw new ProtocolExceptions.MessageTooLong(m.getText().length());
-            }
-            server.broadcastMSG(m);
-            server.getArchive().loadToTXT(m);
         }
 
         else if (m.getMessageType() == MSGType.LOGIN) {
@@ -71,7 +76,6 @@ public class ClientHandler implements Runnable {
                 throw new AuthExceptions.InvalidNickname("Ник пуст");
             }
             if (server.isNicknameTaken(temp.getName())) {
-                senMSGToClient(new Message("Ник уже занят", new User("System", 0), MSGType.TEXT));
                 throw new AuthExceptions.UserAlreadyExists(temp.getName());
             }
 

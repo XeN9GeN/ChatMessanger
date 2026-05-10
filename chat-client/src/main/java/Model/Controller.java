@@ -40,7 +40,6 @@ public class Controller {
     }
 
 
-
     private void setupLogic() {
         //enter in login
         ActionListener loginAction = e -> {
@@ -80,7 +79,6 @@ public class Controller {
             }
         });
     }
-
     private void connectToServer(String name, String host, int port) {
         try{
             Socket socket = new Socket(host,port);
@@ -90,8 +88,8 @@ public class Controller {
             Message loginmsg = new Message(null,currentUser, MSGType.LOGIN);
             networkConnection.sendMSG(loginmsg);
 
-            showChat();
             startMessageListener();
+
         } catch (IOException e) {
             handleClientError(new ClientException.ConnectionException(host));
         }
@@ -99,25 +97,42 @@ public class Controller {
 
     private void startMessageListener(){
         new Thread(()->{
+            boolean firstMessageReceived = false;
+
             try{
                 while(true){
                     Object obj = networkConnection.recvMSG();
+
                     if (obj instanceof Message) {
+                        if (!firstMessageReceived) {
+                            SwingUtilities.invokeLater(this::showChat);
+                            firstMessageReceived = true;
+                        }
                         handleIncoming((Message) obj);
                     }
                     else {
                         throw new ClientException.ProtocolException();
                     }
                 }
+
             } catch (ClientException e) {
                 handleClientError(e);
             } catch (Exception e) {
-                System.out.println("Соединение разорвано");
+                handleClientError(new ClientException.ConnectionException("Связь с сервером потеряна"));
+                SwingUtilities.invokeLater(this::showLoginMenu);
             }
         }).start();
     }
-
     private void handleIncoming(Message m) {
+        if (m.getMessageType() == MSGType.PING) {
+            try {
+                networkConnection.sendMSG(new Message(null, currentUser, MSGType.PING));
+            } catch (IOException ex) {
+                // Связь потеряна – вылетим в общий catch выше
+            }
+            return;
+        }
+
         if (m.getOnlineUsers() != null && !m.getOnlineUsers().isEmpty()) {
             chatPanel.updateOnlineList(m.getOnlineUsers(), currentUser.getName());
         }
@@ -141,8 +156,16 @@ public class Controller {
             networkConnection.sendMSG(msg);
         } catch (IOException e) {
             handleClientError(new ClientException.ConnectionException("серверу"));
+
+            try {
+                networkConnection.close();
+            } catch (Exception ignored) {
+            }
+
+            SwingUtilities.invokeLater(this::showLoginMenu);
         }
     }
+
 
     private void showChat() {
         frame.remove(logMenuPanel);
@@ -150,6 +173,13 @@ public class Controller {
         frame.revalidate();
         frame.repaint();
         chatPanel.getInputField().requestFocusInWindow();
+    }
+    private void showLoginMenu() {
+        frame.remove(chatPanel);
+        frame.add(logMenuPanel);
+        frame.revalidate();
+        frame.repaint();
+        logMenuPanel.getInputField().requestFocusInWindow();
     }
     private void handleClientError(ClientException e) {
         SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(frame, e.getMessage(),

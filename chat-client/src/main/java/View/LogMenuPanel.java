@@ -30,11 +30,11 @@ public class LogMenuPanel extends JPanel {
         gbc.gridy = 1; gbc.insets = new Insets(0,0,15,0);
         add(name_field, gbc);
 
-        host_field = createStyledField("Host");
+        host_field = createStyledField("127.0.0.1");
         gbc.gridy = 2;
         add(host_field, gbc);
 
-        port_field = createStyledField("Port");
+        port_field = createStyledField("8081");
         gbc.gridy = 3;
         add(port_field, gbc);
     }
@@ -99,4 +99,7 @@ public class LogMenuPanel extends JPanel {
 
     public JTextField getHostField() { return host_field; }
     public JTextField getPortField() { return port_field; }
+    public JTextField getInputField() {
+        return name_field;
+    }
 }

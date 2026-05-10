@@ -9,7 +9,4 @@ public class AuthExceptions extends ServerException {
     public static class InvalidNickname extends AuthExceptions {
         public InvalidNickname(String reason) { super("Некорректный ник: " + reason); }
     }
-    public static class BannedUser extends AuthExceptions {
-        public BannedUser(String name) { super("Пользователь '" + name + "' заблокирован."); }
-    }
 }

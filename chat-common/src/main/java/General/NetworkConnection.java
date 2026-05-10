@@ -12,6 +12,7 @@ public class NetworkConnection {
 
     public NetworkConnection(Socket socket) throws IOException {
         this.socket=socket;
+        this.socket.setSoTimeout(8000);
         out = new ObjectOutputStream(socket.getOutputStream());
         this.out.flush();
         in = new ObjectInputStream(socket.getInputStream());

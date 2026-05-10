@@ -1,5 +1,6 @@
 package Server.Model.ServerConfig;
 
+import General.MSGType;
 import General.Message;
 import Server.Model.ClientHandler;
 import Server.Utils.Archive.ChatArchive;
@@ -25,7 +26,6 @@ public class ServerMain {
     public int port;
 
 
-
     public ServerMain(String host, int port) {
         this.host = host;
         this.port = port;
@@ -34,6 +34,8 @@ public class ServerMain {
     public void runServer() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             ServerLoger.info("Сервер запущен на порту: " + port);
+
+            startPinger();
 
             while (true) {
                 try {
@@ -51,11 +53,26 @@ public class ServerMain {
             ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());
         }
     }
+
+    private void startPinger() {
+        executorService.execute(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Thread.sleep(4000);
+                    broadcastMSG(new Message(null, null, MSGType.PING));
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+    }
+
     public void broadcastMSG(Message message) {
         for (ClientHandler cl : clientHandlers) {
             cl.senMSGToClient(message);
         }
     }
+
     public List<String> getAllUsersWithStatus(){
         List<String> allFromHistory = archive.getAllRegisteredUsers();
         List<String> currentlyOnline = getOnline();

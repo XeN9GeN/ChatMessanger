@@ -231,3 +231,156 @@ Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соеди
 INFO: Клиент удален. В сети: 0
 мая 10, 2026 9:41:39 PM Server.Utils.ServerLogs.ServerLoger info
 INFO: Сервер запущен на порту: 8081
+мая 10, 2026 10:41:55 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 5885
+мая 10, 2026 11:07:08 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 5885
+мая 10, 2026 11:07:37 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:08:00 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:08:37 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:08:39 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:08:59 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с Kseno разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с Kseno разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:40)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:08:59 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:10:18 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:10:38 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с Kseno разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с Kseno разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:40)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:10:38 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:10:49 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:11:02 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Нарушение протокола: Сообщение слишком длинное (13431 симв.).
+Server.Utils.ExceptionPack.ProtocolExceptions$MessageTooLong: Нарушение протокола: Сообщение слишком длинное (13431 симв.).
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:63)
+	at Server.Model.ClientHandler.run(ClientHandler.java:34)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:11:22 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Соединение с Kseno разорвано (EOF).
+Server.Utils.ExceptionPack.SocketExceptions$ConnectionResetException: Соединение с Kseno разорвано (EOF).
+	at Server.Model.ClientHandler.run(ClientHandler.java:40)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:11:22 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:16:19 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:16:33 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:16:53 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME завершена.
+мая 10, 2026 11:16:53 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:18:16 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:18:48 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:19:08 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME завершена.
+мая 10, 2026 11:19:08 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:19:22 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:19:42 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя Xeng завершена.
+мая 10, 2026 11:19:42 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:19:56 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:20:00 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя Xeng завершена.
+мая 10, 2026 11:20:00 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:20:58 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:20:59 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:21:07 PM Server.Utils.ServerLogs.ServerLoger error
+SEVERE: Ошибка входа: Ник 'CODENAME' уже занят.
+Server.Utils.ExceptionPack.AuthExceptions$UserAlreadyExists: Ошибка входа: Ник 'CODENAME' уже занят.
+	at Server.Model.ClientHandler.handleIncomingMessage(ClientHandler.java:76)
+	at Server.Model.ClientHandler.run(ClientHandler.java:34)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+мая 10, 2026 11:21:07 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:21:17 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:21:19 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME завершена.
+мая 10, 2026 11:21:19 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:21:25 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя xef завершена.
+мая 10, 2026 11:21:25 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:32:03 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:32:09 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:39:03 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:39:21 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME завершена.
+мая 10, 2026 11:39:21 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:39:33 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:40:03 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME2 завершена.
+мая 10, 2026 11:40:03 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:40:04 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя CODENAME3 завершена.
+мая 10, 2026 11:40:04 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:40:07 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:40:15 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 10, 2026 11:40:20 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:40:25 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:41:06 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя user1 завершена.
+мая 10, 2026 11:41:06 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:41:17 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя user2 завершена.
+мая 10, 2026 11:41:17 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 10, 2026 11:41:23 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 10, 2026 11:41:32 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:41:53 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя user1 завершена.
+мая 10, 2026 11:41:53 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1
+мая 10, 2026 11:42:50 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 2
+мая 10, 2026 11:42:59 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сессия пользователя user2 завершена.
+мая 10, 2026 11:42:59 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 1

@@ -132,6 +132,5 @@ public class ChatPanel extends JPanel {
     }
 
     public JTextField getInputField() { return inputField; }
-
     public JButton getSendButton() { return sendButton; }
 }

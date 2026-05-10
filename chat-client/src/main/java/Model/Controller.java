@@ -76,10 +76,14 @@ public class Controller {
         new Thread(()->{
             try{
                 while(true){
-                    Message resp = (Message) networkConnection.recvMSG();
-                    handleIncoming(resp);
+                    Object obj = networkConnection.recvMSG();
+                    if (obj instanceof Message) {
+                        handleIncoming((Message) obj);
+                    }
                 }
-            } catch (IOException | ClassNotFoundException e) { throw new RuntimeException(e); }
+            }
+            catch (IOException e) {System.out.println("Connect thread gg");}
+            catch (Exception e) { e.printStackTrace(); }
         }).start();
     }
 
@@ -92,6 +96,7 @@ public class Controller {
                 ChatMSGPanel msgWidget = new ChatMSGPanel(sender, text);
                 chatPanel.addMessageComponent(msgWidget);
             });
+            System.out.println("good for client from server with msg: " + m.getText());
         }
     }
 

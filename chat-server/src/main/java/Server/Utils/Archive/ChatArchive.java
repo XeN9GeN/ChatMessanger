@@ -1,27 +1,22 @@
 package Server.Utils.Archive;
 
+import General.Message;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
 
 
-//Как архивировать чат и где?
 public class ChatArchive {
-    private final String name;
-    //private final Time data;
-    private final List<String> history = new ArrayList<>();
-
-
     public ChatArchive(String user){
-        this.name = user;
     }
 
-    public void loadToTXT(String text) throws IOException {
-        try(Writer writer = new FileWriter("chatArchive.txt")){
-            writer.write(text);
+    public void loadToTXT(Message m) throws IOException {
+        String path = "chat-server/src/main/java/Server/Utils/Archive/chatArchive.txt";
+        try(Writer writer = new FileWriter(path,true)){
+            writer.write("U " + m.getUser().getName() + " | " + "M: " + m.getText() + "\n");
         }
+        catch (IOException e ){ System.out.println("trouble with txt file");}
     }
     public void uploadFromTXT(){
 

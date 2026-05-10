@@ -13,7 +13,11 @@ public class ChatPanel extends JPanel {
         messagesContainer = new JPanel();
         messagesContainer.setLayout(new BoxLayout(messagesContainer, BoxLayout.Y_AXIS));
 
-        JScrollPane scrollPane = new JScrollPane(messagesContainer);
+        JPanel alignTopPanel = new JPanel(new BorderLayout());
+        alignTopPanel.add(messagesContainer, BorderLayout.NORTH);
+
+        JScrollPane scrollPane = new JScrollPane(alignTopPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane, BorderLayout.CENTER);
 
         inputField = new JTextField();

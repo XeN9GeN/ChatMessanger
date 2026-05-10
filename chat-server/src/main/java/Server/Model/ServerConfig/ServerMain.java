@@ -1,7 +1,6 @@
 package Server.Model.ServerConfig;
 
 import General.Message;
-import General.User;
 import Server.Model.ClientHandler;
 import Server.Utils.Archive.ChatArchive;
 
@@ -18,7 +17,7 @@ public class ServerMain {
     private List<ClientHandler> clientHandlers = new CopyOnWriteArrayList<>();
     //виртуальный поток внутри JVM, если есть блок операция(in/out), то он «открепляется» от реального потока процессора
     private ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
-    private ChatArchive archive;
+    private ChatArchive archive = new ChatArchive("Server");
     public String host;
     public int port;
 

@@ -42,10 +42,14 @@ public class ClientHandler implements Runnable{
         }
     }
 
-    public void handleIncomingMessage(Message m){
+    public void handleIncomingMessage(Message m) throws IOException {
         if(m.getMessageType()== MSGType.TEXT){
-            //server.getArchive().loadToTXT();
             server.broadcastMSG(m);
+            if (m.getText() != null) {
+                server.getArchive().loadToTXT(m);
+                System.out.println("good for server from client user " + m.getUser().getName() +
+                        " with msg: " + m.getText());
+            }
         }
 
         else if(m.getMessageType()== MSGType.LOGIN){
@@ -54,9 +58,10 @@ public class ClientHandler implements Runnable{
 
             //Подумать чё с этим делать
             List<String> users = server.getOnline();
-            Message msg = new Message("log in", user, MSGType.UPDATE_USERS);
+            Message msg = new Message("log in new user " + user.getName(), user, MSGType.UPDATE_USERS);
             msg.setOnlineUsers(users);
 
+            System.out.println("good for server with new user: " + m.getUser().getName());
             server.broadcastMSG(msg);
         }
     }

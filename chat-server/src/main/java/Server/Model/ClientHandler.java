@@ -78,6 +78,7 @@ public class ClientHandler implements Runnable {
                 }
                 server.broadcastMSG(m);
                 server.getArchive().loadToTXT(m);//загружаем сообщение в архив
+
             } catch (ProtocolExceptions.FloodException e) {
                 ServerLoger.logAndEat(e);
                 senMSGToClient(new Message("Предупреждение: не спамьте! Сообщение не отправлено.",

@@ -6,6 +6,9 @@ import java.awt.*;
 import java.io.InputStream;
 import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.io.IOException;
 import java.net.URL;
 
@@ -16,6 +19,7 @@ public class ChatPanel extends JPanel {
     private JButton sendButton;
     private Image bgImage;
     public static Font pixelFont;
+    private JButton logoutButton;
 
     public ChatPanel() {
         loadResources();
@@ -84,27 +88,44 @@ public class ChatPanel extends JPanel {
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(null);
         styleScrollBar(scroll);
+
         add(scroll, BorderLayout.CENTER);
     }
 
     private void initUsersArea() {
+        JPanel rightSidebar = new JPanel(new BorderLayout());
+        rightSidebar.setOpaque(false);
+        rightSidebar.setPreferredSize(new Dimension(320, 0));
+
         usersContainer = new JPanel();
         usersContainer.setLayout(new BoxLayout(usersContainer, BoxLayout.Y_AXIS));
-        usersContainer.setBackground(new Color(30, 15, 20, 200));
+        usersContainer.setOpaque(false);
 
         JPanel topAlign = new JPanel(new BorderLayout());
         topAlign.setOpaque(false);
         topAlign.add(usersContainer, BorderLayout.NORTH);
 
         JScrollPane scroll = new JScrollPane(topAlign);
-        scroll.setPreferredSize(new Dimension(320, 0));
-        scroll.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255, 105, 180), 2),
+        scroll.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(new Color(255, 105, 180), 2),
                 " [ONLINE] ", 0, 0,
                 (ChatPanel.pixelFont.deriveFont(Font.BOLD, 16f)), new Color(255, 105, 180)));
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         styleScrollBar(scroll);
-        add(scroll, BorderLayout.EAST);
+
+        logoutButton = new JButton("LOG OUT");
+        logoutButton.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 14f));
+        logoutButton.setForeground(Color.WHITE);
+        logoutButton.setBackground(new Color(255, 50, 100));
+        logoutButton.setFocusPainted(false);
+        logoutButton.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
+        logoutButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        rightSidebar.add(scroll, BorderLayout.CENTER);
+        rightSidebar.add(logoutButton, BorderLayout.SOUTH);
+
+        add(rightSidebar, BorderLayout.EAST);
     }
 
     private void initInputArea() {
@@ -118,6 +139,15 @@ public class ChatPanel extends JPanel {
         inputField.setBackground(new Color(45, 25, 30));
         inputField.setCaretColor(new Color(255, 105, 180));
         inputField.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(255, 105, 180), 2), BorderFactory.createEmptyBorder(12, 15, 12, 15)));
+        inputField.setDocument(new PlainDocument(){
+            @Override
+            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+                if(str==null) return;
+                if((getLength() + str.length())<=150) {
+                    super.insertString(offs,str,a);
+                }
+            }
+        });
 
         sendButton = new JButton("SEND");
         sendButton.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 16f));
@@ -133,7 +163,7 @@ public class ChatPanel extends JPanel {
     public void addMessageComponent(ChatMSGPanel msgPanel) {
         JPanel row = new JPanel(new FlowLayout(msgPanel.isMine() ? FlowLayout.RIGHT : FlowLayout.LEFT));
         row.setOpaque(false);
-        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 110));
+        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, msgPanel.getPreferredSize().height + 10));
         row.add(msgPanel);
 
         messagesPanel.add(row);
@@ -169,4 +199,5 @@ public class ChatPanel extends JPanel {
 
     public JTextField getInputField() { return inputField; }
     public JButton getSendButton() { return sendButton; }
+    public JButton getLogoutButton() { return logoutButton; }
 }

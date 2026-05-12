@@ -26,8 +26,13 @@ public class ClientHandler implements Runnable {
 
     public ClientHandler(Socket socket, ServerMain server) throws IOException {
         this.networkConnection = new NetworkConnection(socket);
-        //задаёт максимальное время ожидания входящих данных при блокирующем чтении (readObject внутри recvMSG())
-        this.networkConnection.socket.setSoTimeout(20000);//от клиента к серверу
+        //задаёт максимальное время ожидания входящих данных(от клиента) при блокирующем чтении (readObject внутри recvMSG())
+        this.networkConnection.socket.setSoTimeout(7000);
+        //если в течение 7 секунд тут метод networkConnection.recvMSG()
+        // не получит никаких данных от клиента, вылетит SocketTimeoutException. У клиента 7-4=3 секунды на это
+        //сервер 4 сек ping -> Controller handleIncoming -> networkConnection.recvMSG() на clientHandler
+        //->обновляет setSoTimeout
+
         this.server = server;
     }
 
@@ -42,12 +47,14 @@ public class ClientHandler implements Runnable {
                 handleIncomingMessage((Message) obj);
             }
 
+        } catch (ProtocolExceptions.ClientExitException e) {
+            ServerLoger.info("Клиент " + user.getName() + " покинул чат самостоятельно.");
         } catch (ProtocolExceptions | AuthExceptions e) {
             ServerLoger.logAndEat(e);
         } catch (SocketTimeoutException e) {
             ServerLoger.logAndEat(new SocketExceptions.TimeoutException());
         } catch (Exception e) {
-            ServerLoger.info("Сессия пользователя " + (user != null ? user.getName() : "unknown") + " завершена.");
+            ServerLoger.info("Связь с " + (user != null ? user.getName() : "unknown") + " потеряна.");
         }
 
         finally {
@@ -71,12 +78,6 @@ public class ClientHandler implements Runnable {
                 }
                 server.broadcastMSG(m);
                 server.getArchive().loadToTXT(m);//загружаем сообщение в архив
-
-            } catch (ProtocolExceptions.MessageTooLong e) {
-                ServerLoger.logAndEat(e);
-                senMSGToClient(new Message("Ошибка: сообщение слишком длинное!",
-                        new User("System", 0), MSGType.TEXT));
-
             } catch (ProtocolExceptions.FloodException e) {
                 ServerLoger.logAndEat(e);
                 senMSGToClient(new Message("Предупреждение: не спамьте! Сообщение не отправлено.",
@@ -110,9 +111,10 @@ public class ClientHandler implements Runnable {
             server.broadcastMSG(msg);
         }
 
+        //вместо throw new ProtocolExceptions.ClientExitException() нам нужно как-то прервать цикл в методе run().
+        //закрыть соединение здесь или изменить логику run.
         else if(m.getMessageType()==MSGType.EXIT){
-            throw new ProtocolExceptions.ClientExitException();//не ловится внутри, чтобы метод выше поймал его и
-            //завёл в finally
+            throw new ProtocolExceptions.ClientExitException();
         }
     }
 

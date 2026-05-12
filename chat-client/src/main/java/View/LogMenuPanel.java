@@ -2,6 +2,9 @@ package View;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 
 public class LogMenuPanel extends JPanel {
@@ -18,7 +21,7 @@ public class LogMenuPanel extends JPanel {
         setBackground(BG);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel title = new JLabel("SAKURA_OS v8.1");
+        JLabel title = new JLabel("8-BIT-SAKURA-CHAT");
         title.setFont(ChatPanel.pixelFont.deriveFont(Font.BOLD, 16f));
         title.setForeground(PINK_BRIGHT);
         gbc.gridy = 0; gbc.insets = new Insets(0,0,40,0);
@@ -27,6 +30,16 @@ public class LogMenuPanel extends JPanel {
         name_field = createStyledField("USER_NAME");
         gbc.gridy = 1; gbc.insets = new Insets(0,0,15,0);
         add(name_field, gbc);
+        name_field.setDocument(new PlainDocument(){
+            @Override
+            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+                if(str==null) return;
+                if((getLength() + str.length())<=150) {
+                    super.insertString(offs,str,a);
+                }
+            }
+        });
+
 
         host_field = createStyledField("127.0.0.1");
         gbc.gridy = 2;
@@ -60,7 +73,9 @@ public class LogMenuPanel extends JPanel {
 
     public String getHost() { return host_field.getText().trim(); }
     public String getPort() { return port_field.getText().trim(); }
-    public String getPlayerName() { return name_field.getText().trim(); }
+    public String getPlayerName() {
+        return name_field.getText().trim();
+    }
     public JTextField getNameField() { return name_field; }
     public JTextField getHostField() { return host_field; }
     public JTextField getPortField() { return port_field; }

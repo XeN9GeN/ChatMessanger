@@ -1,6 +1,9 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 
 public class ChatMSGPanel extends JPanel {
@@ -81,6 +84,7 @@ public class ChatMSGPanel extends JPanel {
         int index = Math.abs(name != null ? name.hashCode() : 0) % colors.length;
         return colors[index];
     }
+
 
     public boolean isMine() { return isMine; }
 }

@@ -1,14 +1,17 @@
 package Server.Model.ServerConfig;
 
+import Server.Utils.ConfigLoader;
 import Server.Utils.ExceptionPack.InternalExceptions;
 import Server.Utils.ServerLogs.ServerLoger;
 
+
 public class ServerApp {
     public static void main(String[] args) {
+        int port = ConfigLoader.getPort();
 
         while (true) {
             try {
-                ServerMain serverMain = new ServerMain("127.0.0.1", 8081);
+                ServerMain serverMain = new ServerMain(port);
                 serverMain.runServer();
             } catch (Exception e) {
                 ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());

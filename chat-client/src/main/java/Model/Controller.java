@@ -19,9 +19,9 @@ public class Controller {
     private final LogMenuPanel logMenuPanel;
     private final ChatPanel chatPanel;
     private final JFrame frame;
-
     private NetworkConnection networkConnection;
     private User currentUser;
+    private boolean isLoggingOut = false;
 
 
     public Controller(LogMenuPanel lmp, ChatPanel cp) {
@@ -59,6 +59,10 @@ public class Controller {
         //enter in login
         ActionListener loginAction = e -> {
             String name = logMenuPanel.getPlayerName();
+            if ("System".equalsIgnoreCase(name.trim())) {
+                handleClientError(new Utils.ClientException("Имя 'System' зарезервировано. Выберите другое имя."));
+                return;
+            }
             String host = logMenuPanel.getHost();
             String portStr = logMenuPanel.getPort();
 
@@ -93,8 +97,23 @@ public class Controller {
                 chatPanel.getInputField().setText("");
             }
         });
+
+        //log out
+        chatPanel.getLogoutButton().addActionListener(e -> {
+            isLoggingOut = true;
+            try {
+                if (networkConnection != null && currentUser != null) {
+                    networkConnection.sendMSG(new Message(null, currentUser, MSGType.EXIT));
+                    networkConnection.close();
+                }
+            } catch (IOException ex) {
+            } finally {
+                showLoginMenu();
+            }
+        });
     }
     private void connectToServer(String name, String host, int port) {
+        isLoggingOut = false;
         try{
             Socket socket = new Socket(host,port);
             this.networkConnection = new NetworkConnection(socket);
@@ -133,8 +152,10 @@ public class Controller {
             } catch (ClientException e) {
                 handleClientError(e);
             } catch (Exception e) {//ЕСЛИ ПЕРЕСТАЁТ РАБОТАТЬ networkConnection.recvMSG() ТО ТАЙМАУТ ВЫКИНЕТ ТЕБЯ!
-                handleClientError(new ClientException.ConnectionException("Связь с сервером потеряна"));
-                SwingUtilities.invokeLater(this::showLoginMenu);
+                if (!isLoggingOut) {//если вылетели не сами
+                    handleClientError(new ClientException.ConnectionException("Связь с сервером потеряна"));
+                    SwingUtilities.invokeLater(this::showLoginMenu);
+                }
             }
         }).start();
     }
@@ -190,6 +211,7 @@ public class Controller {
         chatPanel.getInputField().requestFocusInWindow();
     }
     private void showLoginMenu() {
+        this.networkConnection = null;
         frame.remove(chatPanel);
         frame.add(logMenuPanel);
         frame.revalidate();

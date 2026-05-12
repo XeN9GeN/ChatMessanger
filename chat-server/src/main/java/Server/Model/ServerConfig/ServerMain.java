@@ -20,14 +20,12 @@ import java.util.concurrent.Executors;
 public class ServerMain {
     private List<ClientHandler> clientHandlers = new CopyOnWriteArrayList<>();
     //виртуальный поток внутри JVM, если есть блок операция(in/out), то он «открепляется» от реального потока процессора
-    private ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+    private ExecutorService executorService = Executors.newFixedThreadPool(50);
     private ChatArchive archive = new ChatArchive("Server");
-    public String host;
     public int port;
 
 
-    public ServerMain(String host, int port) {
-        this.host = host;
+    public ServerMain( int port) {
         this.port = port;
     }
 

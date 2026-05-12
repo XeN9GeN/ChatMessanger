@@ -12,7 +12,8 @@ public class NetworkConnection {
 
     public NetworkConnection(Socket socket) throws IOException {
         this.socket=socket;
-        this.socket.setSoTimeout(8000);
+        //ping<timeout server<timeout client
+        this.socket.setSoTimeout(10000);//если сервер сдох
         out = new ObjectOutputStream(socket.getOutputStream());
         this.out.flush();
         in = new ObjectInputStream(socket.getInputStream());

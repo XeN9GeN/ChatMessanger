@@ -8,11 +8,20 @@ import Server.Utils.ExceptionPack.InternalExceptions;
 import Server.Utils.ExceptionPack.SocketExceptions;
 import Server.Utils.ServerLogs.ServerLoger;
 
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+
+import java.net.InetSocketAddress;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.nio.channels.ServerSocketChannel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +31,7 @@ public class ServerMain {
     //виртуальный поток внутри JVM, если есть блок операция(in/out), то он «открепляется» от реального потока процессора
     private ExecutorService executorService = Executors.newFixedThreadPool(50);
     private ChatArchive archive = new ChatArchive("Server");
+    private volatile boolean isRunning = true;
     public int port;
 
 
@@ -35,20 +45,45 @@ public class ServerMain {
 
             startPinger();
 
-            while (true) {
+            while (isRunning) {
                 try {
                     Socket socket = serverSocket.accept();
                     ClientHandler clientHandler = new ClientHandler(socket, this);
                     executorService.execute(clientHandler);
-                } catch (IOException e) {
+                } catch (SocketException e) {
                     ServerLoger.error("Ошибка при подключении клиента", e);
                 }
             }
 
         } catch (IOException e) {
             ServerLoger.logAndEat(new SocketExceptions.BindException(port));
-        } catch (Exception e) {
-            ServerLoger.logAndEat(new InternalExceptions.MemoryOverflow());
+        }
+    }
+
+    public void runServer2() throws IOException {
+        try{
+            ServerSocketChannel channel = ServerSocketChannel.open();
+            Selector selector = Selector.open();
+            channel.socket().bind(new InetSocketAddress(port));
+            channel.configureBlocking(false);
+
+            SelectionKey regKey = channel.register(selector, SelectionKey.OP_ACCEPT);
+
+            while(true){
+                int numReadyChannels = selector.select();
+                if(numReadyChannels==0) continue;
+
+                Set<SelectionKey> selectionKeySet = selector.selectedKeys();
+                Iterator<SelectionKey> keyIterator = selectionKeySet.iterator();
+                while(keyIterator.hasNext()){
+                    SelectionKey key = keyIterator.next();
+
+                    if(key.isAcceptable()){
+                        ServerSocketChannel server = (ServerSocketChannel) key.channel();
+
+                    }
+                }
+            }
         }
     }
 

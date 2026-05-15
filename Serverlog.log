@@ -1631,3 +1631,27 @@ INFO: Клиент добавлен. В сети: 1
 INFO: Клиент xeno покинул чат самостоятельно.
 мая 12, 2026 7:58:16 PM Server.Utils.ServerLogs.ServerLoger info
 INFO: Клиент удален. В сети: 0
+мая 12, 2026 8:00:37 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 12, 2026 8:00:41 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 15, 2026 7:31:41 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 15, 2026 7:32:08 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 15, 2026 7:32:13 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент xeno покинул чат самостоятельно.
+мая 15, 2026 7:32:13 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0
+мая 15, 2026 7:33:31 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 15, 2026 7:33:54 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 15, 2026 7:38:27 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Сервер запущен на порту: 8081
+мая 15, 2026 7:38:43 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент добавлен. В сети: 1
+мая 15, 2026 7:38:49 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент xeno покинул чат самостоятельно.
+мая 15, 2026 7:38:49 PM Server.Utils.ServerLogs.ServerLoger info
+INFO: Клиент удален. В сети: 0

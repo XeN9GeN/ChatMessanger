@@ -6,7 +6,7 @@ import java.awt.*;
 public class UsersPanel extends JPanel {
     public UsersPanel(String fullName, String currentUserName){
         setLayout(new BorderLayout());
-        setOpaque(false);
+        //setOpaque(false);
 
         setPreferredSize(new Dimension(300, 65));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 65));
@@ -28,8 +28,16 @@ public class UsersPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(new Color(255, 105, 180, 40));
-        g.drawLine(10, getHeight() - 1, getWidth() - 10, getHeight() - 1);
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2d.setColor(new Color(0, 0, 0, 140));
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+
+        g2d.setColor(new Color(255, 105, 180, 100));
+        g2d.drawLine(10, getHeight() - 1, getWidth() - 10, getHeight() - 1);
+
+        g2d.dispose();
     }
 }
